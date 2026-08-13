@@ -9,6 +9,7 @@ import cors from "cors"
 
 import fs from "fs"
 import path from "path"
+import job from "./lib/cron.js"
 const publicDir = path.join(process.cwd(),"public");
 
 const PORT = process.env.PORT;
@@ -36,5 +37,6 @@ if(fs.existsSync(publicDir)){
 app.listen(PORT,()=>{
     connectDB();
     console.log(`server is now running on http://localhost:${PORT}`);
+    if(process.env.NODE_ENV==="production") job.start();
 });
 
