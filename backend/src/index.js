@@ -22,7 +22,7 @@ const app = express();
 const FRONTEND_URL = process.env.FRONTEND_URL;
 
 //its important you dont parse the webhook data it should be in raw fromat
-app.use('/api/webhooks/clerk',express.raw({type:"application/josn"}),clerkWebhook);
+app.use('/api/webhooks/clerk',express.raw({type:'application/json'}),clerkWebhook);
 
 app.use(express.json());
 app.use(cors({origin:FRONTEND_URL, credentials:true}));
