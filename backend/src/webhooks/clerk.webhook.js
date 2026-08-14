@@ -54,7 +54,7 @@ router.post('/', async (req, res) => {
 
 
     } catch (err) {
-        console.log("error from clerk webhook");
+        console.log("error from clerk webhook",err.message);
         return res.status(400).json({
             status: "clerk webhook failed",
         })
