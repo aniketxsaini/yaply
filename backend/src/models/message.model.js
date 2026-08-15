@@ -23,6 +23,6 @@ const messageSchema = new mongoose.Schema({
 
 }, { timestamps: true });
 
-const messageSchema = mongoose.model("messages");
+const Message = mongoose.model("Message", messageSchema);
 
-export default User;
+export default Message;
