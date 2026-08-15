@@ -21,4 +21,8 @@ const messageSchema = new mongoose.Schema({
         type: String,
     },
 
-}, { timestamps: true })
+}, { timestamps: true });
+
+const messageSchema = mongoose.model("messages");
+
+export default User;
