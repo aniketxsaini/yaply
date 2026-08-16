@@ -14,7 +14,7 @@ import job from "./lib/cron.js"
 import clerkWebhook from "./webhooks/clerk.webhook.js"; 
 import authRoutes from "./routes/auth.route.js";
 
-
+import messageRoute from "./routes/message.route.js";
 
 const publicDir = path.join(process.cwd(),"public");
 
@@ -36,6 +36,7 @@ app.get('/health',(req,res)=>{
 });
 
 app.use('/api/auth',authRoutes);
+app.use('/api/messages',messageRoute);
 
 if(fs.existsSync(publicDir)){
     app.use(express.static(publicDir));
