@@ -15,12 +15,13 @@ import clerkWebhook from "./webhooks/clerk.webhook.js";
 import authRoutes from "./routes/auth.route.js";
 
 import messageRoute from "./routes/message.route.js";
+import {app,server} from './lib/socket.js';
 
 const publicDir = path.join(process.cwd(),"public");
 
 
 const PORT = process.env.PORT;
-const app = express();
+//const app = express(); not needed will use socket
 const FRONTEND_URL = process.env.FRONTEND_URL;
 
 //its important you dont parse the webhook data it should be in raw fromat
@@ -46,8 +47,8 @@ if(fs.existsSync(publicDir)){
     })
 }
 
-
-app.listen(PORT,()=>{
+ 
+server.listen(PORT,()=>{
     connectDB();
     console.log(`server is now running on http://localhost:${PORT}`);
     if(process.env.NODE_ENV==="production") job.start();
