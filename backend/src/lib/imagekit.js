@@ -1,6 +1,6 @@
-import imagekit,{toFlie} from "@imagekit/nodejs";
+import imagekit,{toFile} from "@imagekit/nodejs";
 
-const imagekit = new imagekit({privateKey:process.env.IMAGEKIT_PRIVATE_KEY});
+const image_kit = new imagekit({privateKey:process.env.IMAGEKIT_PRIVATE_KEY});
 
 function hasImagekitConfig(){
     return Boolean(process.env.IMAGEKIT_PRIVATE_KEY);   
@@ -16,7 +16,7 @@ function createFileName(originalName="upload"){
 async function uploadChatMedia(file){
     const fileName=createFileName(file.originalName);
 
-    const result= await imagekit.files.upload({
+    const result= await image_kit.files.upload({
         file:await toFile(file.buffer,fileName,{type:file.mimetype}),
         fileName,
         folder:"/chat",
